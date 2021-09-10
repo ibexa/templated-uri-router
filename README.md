@@ -1,7 +1,7 @@
 Hautelook Templated URI Router
 ==============================
 
-Fork of `hautelook/templated-uri-bundle`. Symfony2 UrlGenerator that provides a [RFC-6570][RFC-6570] compatible router and URL Generator.
+Fork of `hautelook/templated-uri-router`. Symfony2 UrlGenerator that provides a [RFC-6570][RFC-6570] compatible router and URL Generator.
 Currently it is extremely naive, and incomplete.
 However, it does what we need it to do. Contributions are welcome.
 
@@ -10,10 +10,10 @@ However, it does what we need it to do. Contributions are welcome.
 ## Installation
 
 Run the following command (assuming you have composer.phar or composer binary installed), or
-require `hautelook/templated-uri-router` to your `composer.json` and run `composer install`:
+require `ibexa/templated-uri-router` to your `composer.json` and run `composer install`:
 
 ```bash
-$ composer require "hautelook/templated-uri-router ~1.0"
+$ composer require ibexa/templated-uri-router
 ```
 
 ## Usage
