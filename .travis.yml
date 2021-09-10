@@ -1,0 +1,37 @@
+language: php
+
+sudo: false
+
+cache:
+    directories:
+        - $HOME/.composer/cache
+
+matrix:
+  include:
+    - php: 5.3
+      dist: precise
+    - php: 5.4
+      env: COMPOSER_FLAGS="--prefer-lowest"
+      dist: precise
+    - php: 5.5
+      dist: precise
+    - php: 5.6
+      env: SYMFONY_LTS=v3 DEPENDENCIES=dev COMPOSER_FLAGS="--prefer-stable"
+    - php: 7.0
+      env: SYMFONY_LTS=v2
+    - php: 7.1
+    - php: 7.2
+    - php: 7.3
+    - php: 7.4
+
+before_install:
+  - if [ "$SYMFONY_LTS" != "" ]; then composer require --dev --no-update symfony/lts=$SYMFONY_LTS; fi
+  - if [ "$DEPENDENCIES" = "dev" ]; then composer config minimum-stability dev; fi;
+
+install: travis_retry composer update $COMPOSER_FLAGS
+
+script:
+  - php vendor/bin/phpunit --coverage-text
+
+notifications:
+    email: false
