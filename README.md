@@ -1,7 +1,7 @@
 Hautelook Templated URI Router
 ==============================
 
-Symfony2 UrlGenerator that provides a [RFC-6570][RFC-6570] compatible router and URL Generator.
+Fork of `hautelook/templated-uri-bundle`. Symfony2 UrlGenerator that provides a [RFC-6570][RFC-6570] compatible router and URL Generator.
 Currently it is extremely naive, and incomplete.
 However, it does what we need it to do. Contributions are welcome.
 
