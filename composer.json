@@ -1,6 +1,6 @@
 {
     "name": "ibexa/templated-uri-router",
-    "description": "Symfony2 RFC-6570 compatible router and URL Generator",
+    "description": "Fork of hautelook/templated-uri-router. Symfony2 RFC-6570 compatible router and URL Generator",
     "keywords": [
         "Symfony2",
         "URI",
