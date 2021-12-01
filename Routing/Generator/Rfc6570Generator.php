@@ -28,8 +28,8 @@ use Symfony\Component\Routing\Generator\ConfigurableRequirementsInterface;
 class Rfc6570Generator extends BcUrlGenerator implements UrlGeneratorInterface, ConfigurableRequirementsInterface
 {
     /**
-     * @throws MissingMandatoryParametersException When some parameters are missing that mandatory for the route
-     * @throws InvalidParameterException           When a parameter value for a placeholder is not correct because
+     * @throws \Symfony\Component\Routing\Exception\MissingMandatoryParametersException When some parameters are missing that mandatory for the route
+     * @throws \Symfony\Component\Routing\Exception\InvalidParameterException           When a parameter value for a placeholder is not correct because
      *                                             it does not match the requirement
      */
     protected function doGenerate($variables, $defaults, $requirements, $tokens, $parameters, $name, $referenceType, $hostTokens, array $requiredSchemes = array())
