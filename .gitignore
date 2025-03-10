@@ -1,6 +1,9 @@
 # Composer
-vendor/*
 composer.lock
+vendor/*
 
 # PHPStorm
 .idea
+
+# PHPUnit
+.phpunit.result.cache

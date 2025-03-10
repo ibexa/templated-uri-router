@@ -13,11 +13,13 @@ namespace Hautelook\TemplatedUriRouter\Routing\Generator;
 
 use Symfony\Component\Routing\Exception\InvalidParameterException;
 use Symfony\Component\Routing\Exception\MissingMandatoryParametersException;
+use Symfony\Component\Routing\Generator\CompiledUrlGenerator;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Routing\Generator\ConfigurableRequirementsInterface;
 
 /**
  * UrlGenerator generates a URL template according to RFC6570 based on a set of routes.
+ *
  * @link https://tools.ietf.org/html/rfc6570
  *
  * @author Fabien Potencier <fabien@symfony.com>
@@ -25,14 +27,14 @@ use Symfony\Component\Routing\Generator\ConfigurableRequirementsInterface;
  *
  * @api
  */
-class Rfc6570Generator extends BcUrlGenerator implements UrlGeneratorInterface, ConfigurableRequirementsInterface
+class Rfc6570Generator extends CompiledUrlGenerator implements UrlGeneratorInterface, ConfigurableRequirementsInterface
 {
     /**
-     * @throws \Symfony\Component\Routing\Exception\MissingMandatoryParametersException When some parameters are missing that mandatory for the route
-     * @throws \Symfony\Component\Routing\Exception\InvalidParameterException           When a parameter value for a placeholder is not correct because
+     * @throws MissingMandatoryParametersException When some parameters are missing that mandatory for the route
+     * @throws InvalidParameterException           When a parameter value for a placeholder is not correct because
      *                                             it does not match the requirement
      */
-    protected function doGenerate($variables, $defaults, $requirements, $tokens, $parameters, $name, $referenceType, $hostTokens, array $requiredSchemes = array())
+    protected function doGenerate(array $variables, array $defaults, array $requirements, array $tokens, array $parameters, string $name, int $referenceType, array $hostTokens, array $requiredSchemes = []): string
     {
         // These are needed for encoded URLs, such as /resize/{width}x{height}/image/
         $this->decodedChars['%7B'] = '{';
@@ -62,7 +64,7 @@ class Rfc6570Generator extends BcUrlGenerator implements UrlGeneratorInterface, 
                             $this->logger->error($message);
                         }
 
-                        return null;
+                        return '';
                     }
 
                     $url = $token[1].$mergedParams[$token[3]].$url;
@@ -115,7 +117,7 @@ class Rfc6570Generator extends BcUrlGenerator implements UrlGeneratorInterface, 
                                 $this->logger->error($message);
                             }
 
-                            return null;
+                            return '';
                         }
 
                         $routeHost = $token[1].$mergedParams[$token[3]].$routeHost;
@@ -153,7 +155,7 @@ class Rfc6570Generator extends BcUrlGenerator implements UrlGeneratorInterface, 
 
         // add a query string if needed
         $extra = array_diff_key($parameters, $variables, $defaults);
-        if (is_array($extra) && !empty($extra)) {
+        if (!empty($extra)) {
             $parts = array();
             foreach ($extra as $key => $value) {
                 if (is_scalar($value)) {
@@ -168,7 +170,7 @@ class Rfc6570Generator extends BcUrlGenerator implements UrlGeneratorInterface, 
         return $url;
     }
 
-    private function isPlaceHolder($param)
+    private function isPlaceHolder($param): bool
     {
         $length = strlen($param);
 
