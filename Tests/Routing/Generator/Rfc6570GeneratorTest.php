@@ -62,7 +62,7 @@ class Rfc6570GeneratorTest extends TestCase
 
         $router = new Rfc6570Generator($routes, new RequestContext());
 
-        self::expectException(InvalidParameterException::class);
+        $this->expectException(InvalidParameterException::class);
         $router->generate('foo', ['foo' => 'foobar', 'bar' => 'barbar']);
     }
 
