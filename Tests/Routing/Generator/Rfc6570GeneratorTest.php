@@ -36,7 +36,7 @@ class Rfc6570GeneratorTest extends TestCase
     /**
      * @return array[]
      */
-    public function getTestPlaceholderData(): array
+    public static function getTestPlaceholderData(): array
     {
         return [
             ['/foo/foobar/{?bar}', ['foo' => 'foobar', 'bar' => 'barbar']],
