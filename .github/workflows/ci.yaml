@@ -27,7 +27,7 @@ jobs:
                       symfony: '^8.0'
 
         steps:
-            - uses: actions/checkout@v4
+            - uses: actions/checkout@v7
 
             - uses: ibexa/gh-workflows/actions/composer-install@main
               with:
