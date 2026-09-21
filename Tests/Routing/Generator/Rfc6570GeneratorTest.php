@@ -14,6 +14,7 @@ namespace Hautelook\TemplatedUriRouter\Tests\Routing\Generator;
 use Hautelook\TemplatedUriRouter\Routing\Generator\Rfc6570Generator;
 use Symfony\Component\Routing\Exception\InvalidParameterException;
 use Symfony\Component\Routing\RequestContext;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -21,9 +22,7 @@ use PHPUnit\Framework\TestCase;
  */
 class Rfc6570GeneratorTest extends TestCase
 {
-    /**
-     * @dataProvider getTestPlaceholderData
-     */
+    #[DataProvider('getTestPlaceholderData')]
     public function testPlaceholder($expected, $parameters)
     {
         $routes = $this->getRoutes(false);
