@@ -5,6 +5,12 @@ Fork of `hautelook/templated-uri-router`. Symfony2 UrlGenerator that provides a 
 Currently it is extremely naive, and incomplete.
 However, it does what we need it to do. Contributions are welcome.
 
+Branches:
+
+- `3.3` : Stable branch for Ibexa DXP 4.6.x
+- `5.0` : Stable branch for Ibexa DXP 5.0.x
+- `main` : Obsolete stable branch for Ibexa DXP 6.0.x ( 6.0.0 will drop dependency to this package )
+
 [![Build Status](https://secure.travis-ci.org/hautelook/TemplatedUriRouter.png?branch=master)](https://travis-ci.org/hautelook/TemplatedUriRouter)
 
 ## Installation
